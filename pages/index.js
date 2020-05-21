@@ -1,11 +1,11 @@
 import {wrapper} from '../redux/store/index';
-
+import { fetchNewsAsyncAction } from '../redux/actions/news.actions';
 import HomePage from '../components/pages/HomePage/HomePage.connect';
 
-export const getStaticProps = wrapper.getStaticProps(
+export const getStaticProps = wrapper.getServerSideProps(
     ({store, preview}) => {
         console.log('2. Page.getStaticProps uses the store to dispatch things');
-        store.dispatch({type: 'TICK', payload: 'was set in other page ' + preview});
+        return store.dispatch(fetchNewsAsyncAction());
     }
 );
 

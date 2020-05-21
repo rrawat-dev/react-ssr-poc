@@ -3,7 +3,6 @@ import {connect} from "react-redux";
 import HomePage from './HomePage.component';
 
 function mapStateToProps(state) {
-    console.log(state);
     return {
         ...state
     }
