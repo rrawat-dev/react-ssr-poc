@@ -11,7 +11,7 @@ export function fetchNewsAsyncAction() {
     console.log('CALLING XHR');
     return (dispatch) => {
         return fetchNews().then((news) => {
-            console.log(`CALLEd XHR ${Object.keys(news)}`);
+
             dispatch(fetchNewsSuccessAction(news));
         });
     };
