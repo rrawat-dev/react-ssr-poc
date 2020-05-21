@@ -1,21 +1,47 @@
+import Loader from '../../atoms/Loader/Loader.component';
 import StyledNewsList from './NewsList.style';
+
 
 export default function NewsList(props) {
     const {news} = props;
 
     const fetchMoreNews = () => {
-        props.fetchNews({page: props.page + 1});
+        props.fetchNews({
+            params: {
+                page: props.news.page + 1
+            }
+        });
+    };
+
+    const fetchLatestNews = () => {
+        props.fetchNews({
+            params: {
+                page: 0
+            }
+        });
+    };
+
+    const hideNewsItem = (id) => {
+        props.hideNewsItem(id);
+    };
+
+    const upvoteNewsItem = (newsitem) => {
+        props.upvoteNewsItem(newsitem.objectID, newsitem._upvotes ? newsitem._upvotes + 1 : 1);
     };
 
     return (
         <StyledNewsList>
+            { props.fullpageLoader && <Loader /> }
             <div className="header">
                 <ul className="links">
-                    <li className="link">
-                        top
+                    <li className="logo-link">
+                        <span className="logo"><img src="images/y18.gif" alt="" /></span>
                     </li>
                     <li className="link">
-                        new
+                        <a href="#" onClick={fetchLatestNews}>top</a>
+                    </li>
+                    <li className="link">
+                        <a href="#" onClick={fetchLatestNews}>new</a>
                     </li>
                 </ul>
             </div>
@@ -24,25 +50,25 @@ export default function NewsList(props) {
                 news.hits.map(newsItem => (
                         <li className="newsitem">
                             <div className="comments">
-                                {newsItem.num_comments}
+                                {newsItem.num_comments || 0}
                             </div>
                             <div className="upvotes">
-                                {newsItem.num_comments}
+                                {newsItem._upvotes}
+                                <span className="icon" onClick={() => upvoteNewsItem(newsItem)}></span>
                             </div>
-                            <div className="title">
-                                {newsItem.title}
-                            </div>
+                            <div className="title">{newsItem.title}</div>
                             <div className="additional-info">
-                                (<b>apple.com</b>) by <span className="author">test</span> 3 hours ago
-                                [<a href="Hide">hide</a>]
+                                { `${newsItem._domain ? '('+newsItem._domain+') ' : ''}by ${newsItem.author} ${newsItem._createdOn} ` }
+                                &nbsp;
+                                <span className="hide-link" onClick={() => hideNewsItem(newsItem.objectID)}>{" [ hide ] "}</span>
                             </div>
                         </li>
                     )
                 )
             }
-            <li className="fetch-more-news">
-                <a href="#" onClick={fetchMoreNews}>More</a>
-            </li>
+                <li>
+                    <button className="fetch-more-cta" onClick={fetchMoreNews}>Load more</button>
+                </li>
             </ul>
         </StyledNewsList>
     );

@@ -15,7 +15,6 @@ const GlobalStyle = createGlobalStyle`
 
     .App {
         margin: 0 auto;
-        border: 1px solid red;
         max-width: 1200px;
         background-color: #f6f6ef;
         min-height: 100vh;
