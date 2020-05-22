@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import PropTypes from 'prop-types';
 import Loader from '../../atoms/Loader/Loader.component';
 import StyledNewsList from './NewsList.style';
@@ -32,17 +33,22 @@ export default function NewsList(props) {
 
     return (
         <StyledNewsList>
+            <Head>
+                <title>My page title</title>
+                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+                <meta name="description" content="News Feeds that gratifies one's intellectual curiosity."/>
+            </Head>
             { props.fullpageLoader && <Loader /> }
             <div className="header">
                 <ul className="links">
                     <li className="logo-link">
-                        <span className="logo"><img src="images/y18.gif" /></span>
+                        <span className="logo"><img src="images/y18.gif" alt="Site Logo" /></span>
                     </li>
                     <li className="link">
-                        <a href="#" onClick={fetchLatestNews}>top</a>
+                        <button onClick={fetchLatestNews}>top</button>
                     </li>
                     <li className="link">
-                        <a href="#" onClick={fetchLatestNews}>new</a>
+                        <button onClick={fetchLatestNews}>new</button>
                     </li>
                 </ul>
             </div>
@@ -55,13 +61,13 @@ export default function NewsList(props) {
                             </div>
                             <div className="upvotes">
                                 <span className="upvote">{newsItem._upvotes}</span>
-                                <span className="icon" onClick={() => upvoteNewsItem(newsItem)}></span>
+                                <button className="icon" onClick={() => upvoteNewsItem(newsItem)}>upvote</button>
                             </div>
                             <div className="title">{newsItem.title}</div>
                             <div className="additional-info">
                                 { `${newsItem._domain ? '('+newsItem._domain+') ' : ''}by ${newsItem.author} ${newsItem._createdOn} ` }
                                 &nbsp;
-                                <span className="hide-link" onClick={() => hideNewsItem(newsItem.objectID)}>{" [ hide ] "}</span>
+                                <button className="hide-link" onClick={() => hideNewsItem(newsItem.objectID)}>{" [ hide ] "}</button>
                             </div>
                         </li>
                     )

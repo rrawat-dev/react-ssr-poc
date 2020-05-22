@@ -38,10 +38,12 @@ export default styled.div`
                 color: #333;
             }
 
-            a {
-                font-size: .9rem;
+            button {
+                font-size: 1rem;
                 color: ${COLORS.white};
-                text-decoration: none;
+                border: none;
+                background: ${COLORS.orange};
+                cursor: pointer;
 
                 &:hover {
                     text-decoration: underline;
@@ -84,6 +86,13 @@ export default styled.div`
             right: 0;
             top: 0;
             cursor: pointer;
+            background: none;
+            border: none;
+            text-indent: -99999px;
+
+            &:focus{
+                outline:none;
+            }
 
             &::after {
                 content: '';
@@ -94,6 +103,7 @@ export default styled.div`
                 border-bottom: 6px solid black;
                 position: absolute;
                 right: 0;
+                top: 0;
             }
         }
     }
@@ -122,10 +132,16 @@ export default styled.div`
             float: right;
             color: #333;
             cursor: pointer;
+            background: transparent;
+            border: none;
 
             &:hover {
                 color: #000;
                 text-decoration: underline;
+            }
+
+            &:focus {
+                outline: none;
             }
         }
     }
@@ -139,7 +155,7 @@ export default styled.div`
         cursor: pointer;
 
         &:focus {
-            border: none;
+            outline: none;
         }
     }
 `;
