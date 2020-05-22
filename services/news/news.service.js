@@ -20,7 +20,8 @@ function getDomain(url) {
 }
 
 export function fetchNews(options) {
-    return httpService.get('https://hn.algolia.com/api/v1/search', (options || {})).then((res) => {
+    const url = global && global.localStorage ? '/api/news' : 'https://hn.algolia.com/api/v1/search';
+    return httpService.get(url, (options || {})).then((res) => {
         return {
             ...res.data,
             hits: (res.data.hits || [])
