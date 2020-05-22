@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import Loader from '../../atoms/Loader/Loader.component';
 import StyledNewsList from './NewsList.style';
 
@@ -48,12 +49,12 @@ export default function NewsList(props) {
             <ul className="newsitems">
             {
                 news.hits.map(newsItem => (
-                        <li className="newsitem">
+                        <li className="newsitem" key={newsItem.objectID}>
                             <div className="comments">
                                 {newsItem.num_comments || 0}
                             </div>
                             <div className="upvotes">
-                                {newsItem._upvotes}
+                                <span className="upvote">{newsItem._upvotes}</span>
                                 <span className="icon" onClick={() => upvoteNewsItem(newsItem)}></span>
                             </div>
                             <div className="title">{newsItem.title}</div>
@@ -73,3 +74,10 @@ export default function NewsList(props) {
         </StyledNewsList>
     );
 }
+
+NewsList.propTypes = {
+    news: PropTypes.object,
+    fetchNews: PropTypes.func.isRequired,
+    hideNewsItem: PropTypes.func.isRequired,
+    upvoteNewsItem: PropTypes.func.isRequired,
+};
