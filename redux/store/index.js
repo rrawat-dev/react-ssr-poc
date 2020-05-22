@@ -1,17 +1,17 @@
 
 import {createStore, applyMiddleware, compose} from 'redux';
-import {createWrapper, HYDRATE} from 'next-redux-wrapper';
+import {createWrapper} from 'next-redux-wrapper';
 import thunk from 'redux-thunk';
 
 import rootReducer from '../reducers/index';
 
 
 // create a makeStore function
-const makeStore = context => createStore(
+const makeStore = () => createStore(
     rootReducer,
     compose(
         applyMiddleware(thunk),
-        global.devToolsExtension ? window.devToolsExtension() : f => f
+        global.devToolsExtension ? global.devToolsExtension() : f => f
     )
 );
 

@@ -125,6 +125,7 @@ export default styled.div`
 
             &:hover {
                 color: #000;
+                text-decoration: underline;
             }
         }
     }

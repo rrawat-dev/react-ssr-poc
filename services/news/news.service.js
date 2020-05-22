@@ -41,9 +41,9 @@ export function fetchNews(options) {
 export function hideNewsItem(id) {
     return new Promise((resolve, reject) => {
         if (global && global.localStorage) {
-            let hiddenNewsItems = JSON.parse(localStorage.getItem('hiddenNewsItems') || '[]');
+            let hiddenNewsItems = JSON.parse(global.localStorage.getItem('hiddenNewsItems') || '[]');
             hiddenNewsItems = hiddenNewsItems.filter(item => item !== id).concat(id);
-            localStorage.setItem('hiddenNewsItems', JSON.stringify(hiddenNewsItems));
+            global.localStorage.setItem('hiddenNewsItems', JSON.stringify(hiddenNewsItems));
             
             setTimeout(() => {
                 resolve();
@@ -57,12 +57,12 @@ export function hideNewsItem(id) {
 export function upvoteNewsItem(id, upvotes) {
     return new Promise((resolve, reject) => {
         if (global && global.localStorage) {
-            let upvotedNewsItems = JSON.parse(localStorage.getItem('upvotedNewsItems') || '{}');
+            let upvotedNewsItems = JSON.parse(global.localStorage.getItem('upvotedNewsItems') || '{}');
             upvotedNewsItems[id] = {
                 _upvotes: upvotes
             };
 
-            localStorage.setItem('upvotedNewsItems', JSON.stringify(upvotedNewsItems));
+            global.localStorage.setItem('upvotedNewsItems', JSON.stringify(upvotedNewsItems));
             
             setTimeout(() => {
                 resolve();

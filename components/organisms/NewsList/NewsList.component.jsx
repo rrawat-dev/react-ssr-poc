@@ -35,7 +35,7 @@ export default function NewsList(props) {
             <div className="header">
                 <ul className="links">
                     <li className="logo-link">
-                        <span className="logo"><img src="images/y18.gif" alt="" /></span>
+                        <span className="logo"><img src="images/y18.gif" /></span>
                     </li>
                     <li className="link">
                         <a href="#" onClick={fetchLatestNews}>top</a>

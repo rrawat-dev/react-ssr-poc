@@ -3,8 +3,8 @@ import { fetchNewsAsyncAction } from '../redux/actions/news.actions';
 import HomePage from '../components/pages/HomePage/HomePage.connect';
 
 export const getStaticProps = wrapper.getServerSideProps(
-    ({store, preview}) => {
-        console.log('2. Page.getStaticProps uses the store to dispatch things');
+    ({store}) => {
+        //console.log('2. Page.getStaticProps uses the store to dispatch things');
         return store.dispatch(fetchNewsAsyncAction());
     }
 );

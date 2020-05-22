@@ -49,7 +49,7 @@ export function fetchNewsAsyncAction(options) {
             }
 
             dispatch(showFullPageLoaderAction(false));
-        }).catch((err) => {
+        }).catch(() => {
             dispatch(showFullPageLoaderAction(false));
         });
     };
@@ -61,7 +61,7 @@ export function hideNewsItemAsyncAction(id) {
         return hideNewsItem(id).then(() => {
             dispatch(hideNewsItemSuccessAction(id));
             dispatch(showFullPageLoaderAction(false));
-        }).catch((err) => {
+        }).catch(() => {
             dispatch(showFullPageLoaderAction(false));
         });
     };
@@ -75,7 +75,7 @@ export function upvoteNewsItemAsyncAction(id, upvotes) {
         return upvoteNewsItem(id, upvotes).then(() => {
             dispatch(upvoteNewsItemSuccessAction(id, upvotes));
             dispatch(showFullPageLoaderAction(false));
-        }).catch((err) => {
+        }).catch(() => {
             dispatch(showFullPageLoaderAction(false));
         });
     };
