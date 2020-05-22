@@ -77,7 +77,7 @@ export default styled.div`
     .upvotes {
         width: 2rem;
         text-align: right;
-        margin-right: .5rem;
+        margin-right: 1.5rem;
         position: relative;
         padding-right: 1rem;
  
