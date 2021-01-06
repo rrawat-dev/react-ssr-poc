@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/rrawat-dev/react-ssr-poc#readme",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "next": "^9.4.2",
     "next-offline": "^5.0.2",
     "next-redux-wrapper": "^6.0.0",
